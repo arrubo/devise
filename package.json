@@ -1,5 +1,8 @@
 {
-  "name": "devise",
+  "name": "workplace",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "plotly.js": "^1.28.3"
+  }
 }

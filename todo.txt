@@ -1,0 +1,11 @@
+
+- login to the nav. view apart
+- stylos and functionalityto nav bar
++ proyectos
+- source tabla datos
+- source historic (excel,api,...) 
+- import methods
+- background jobs
+- scheduling jobs
+- options de devise
+
