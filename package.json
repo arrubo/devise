@@ -2,6 +2,7 @@
   "name": "workplace",
   "private": true,
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "plotly.js": "^1.28.3"
   }
 }

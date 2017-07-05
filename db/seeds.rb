@@ -8,7 +8,7 @@
 
 u = User.new
 u.name = "Paco"
-u.email = "paco@gmail.com"
+u.email = "paco@email.com"
 u.password = 123456
 u.skip_confirmation!
 u.save
