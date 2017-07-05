@@ -7,10 +7,6 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track'=> 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track'=> 'reload'
   %body
-    - if user_signed_in?
-      = render :partial => "shared/navbar_signed"
-    - else
-      = render :partial => "shared/navbar_unsigned"
-    %p.notice= notice
+    = render :partial => "shared/navbar_signed"
     %p.alert= alert
     = yield

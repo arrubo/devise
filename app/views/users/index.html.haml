@@ -1,5 +1,5 @@
 %h1 Listing users
-
+#tester{style:"width:600px;height:250px;"}
 %table
   %thead
     %tr
@@ -7,7 +7,6 @@
       %th
       %th
       %th
-
   %tbody
     - @users.each do |user|
       %tr
@@ -15,5 +14,4 @@
         %td= link_to 'Show', user
         %td= link_to 'Edit', edit_user_path(user)
         %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
-
 %br
