@@ -24,7 +24,5 @@
           %a='Separated link'
         %li
           %a='One more separated link'
-
-  = form_tag('/users/sign_out', method: :delete, class:"navbar-form navbar-right")
-
-  %button.btn.btn-danger{type:"submit"}='Sign out'
+  %form.navbar-form.navbar-right
+    %a.btn.btn-danger.navbar-right{href:"/users/sign_out",data:{method:"delete"}}="Log out"
