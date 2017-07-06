@@ -1,0 +1,12 @@
+%h1 Import Sources
+= form_tag(import_do_sources_path, multipart: true) do
+  .field
+    = label_tag 'Select sources'
+    = file_field_tag 'sources[files][]', multiple:true, class: 'estilos'
+  .actions
+    = submit_tag 'Import'
+
+= link_to "Send to Api", 'http://example.com/profile?' + {param1: 'value1', param2: 'value2'}.to_param, method: :post
+
+%br
+= link_to 'Back', sources_path
