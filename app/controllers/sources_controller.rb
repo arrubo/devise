@@ -61,6 +61,17 @@ class SourcesController < ApplicationController
     end
   end
 
+  def import_form
+    puts params
+  end
+
+  def import_do
+    filenames = params['sources']['files'].map(&:original_filename).join(', ')
+    respond_to do |format|
+      format.html { redirect_to sources_url, notice: "Filenames selected: '#{filenames}'" }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_source

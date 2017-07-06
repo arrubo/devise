@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   get "/pages/welcome" => "pages#welcome"
 
   # sources
-  resources :sources
+  resources :sources do
+    collection do
+      get "import_form" => "sources#import_form"
+      post "import_do" => "sources#import_do"
+    end
+  end
 
   # projects
   resources :projects
