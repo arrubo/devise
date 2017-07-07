@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.json
   def index
+    @active_tab = "dashboards"
     @dashboards = Dashboard.all
   end
 

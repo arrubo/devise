@@ -36,7 +36,7 @@ Rails.application.configure do
       address:              'smtp.gmail.com',
       port:                 587,
       domain:               'localhost',
-      user_name:            YAML::load_file(Rails.root.join('config', 'secrets.yml'))[Rails.env]['email'],
+      user_name:            YAML::load_file(Rails.root.join('config', 'secrets.yml'))[Rails.env]['email_user'],
       password:             YAML::load_file(Rails.root.join('config', 'secrets.yml'))[Rails.env]['email_pass'],
       authentication:       :plain,
       enable_starttls_auto: true

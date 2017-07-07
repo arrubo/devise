@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
+    @active_tab = "projects"
     @projects = Project.all
   end
 

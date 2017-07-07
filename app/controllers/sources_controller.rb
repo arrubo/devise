@@ -4,6 +4,7 @@ class SourcesController < ApplicationController
   # GET /sources
   # GET /sources.json
   def index
+    @active_tab = "sources"
     @sources = Source.all
   end
 

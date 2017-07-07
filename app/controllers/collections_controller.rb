@@ -4,6 +4,7 @@ class CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
+    @active_tab = "collections"
     @collections = Collection.all
   end
 

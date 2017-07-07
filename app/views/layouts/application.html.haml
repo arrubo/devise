@@ -21,6 +21,7 @@
           = render :partial => "shared/navbar_signed"
         - else
           = render :partial => "shared/navbar_unsigned"
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    .container
+      %p.notice= notice
+      %p.alert= alert
+      = yield
