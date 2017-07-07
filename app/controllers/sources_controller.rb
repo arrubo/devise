@@ -1,9 +1,11 @@
 class SourcesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_source, only: [:show, :edit, :update, :destroy]
 
   # GET /sources
   # GET /sources.json
   def index
+    @active_tab = "sources"
     @sources = Source.all
   end
 

@@ -1,9 +1,11 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
+    @active_tab = "projects"
     @projects = Project.all
   end
 

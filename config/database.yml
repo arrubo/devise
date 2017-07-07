@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: workplace_dev
+  pool: 5
+  username: <%= YAML::load_file(Rails.root.join('config', 'secrets.yml'))[Rails.env]['db_user'] %>
+  password: <%= YAML::load_file(Rails.root.join('config', 'secrets.yml'))[Rails.env]['db_pass'] %>
+  host: localhost

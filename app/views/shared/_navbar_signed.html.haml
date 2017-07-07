@@ -1,11 +1,15 @@
 #navbar.navbar-collapse.collapse
   %ul.nav.navbar-nav
-    %li.active
-      %a='Home'
-    %li
-      %a='Otro'
-    %li
-      %a='Mas'
+    %li{class: (@active_tab == "home" ? "active" :"")}
+      = link_to "Home", projects_path
+    %li{class: (@active_tab == "projects" ? "active" :"")}
+      = link_to "Projects", projects_path
+    %li{class: (@active_tab == "sources" ? "active" :"")}
+      = link_to "Sources", sources_path
+    %li{class: (@active_tab == "dashboards" ? "active" :"")}
+      = link_to "Dashboards", dashboards_path
+    %li{class: (@active_tab == "collections" ? "active" :"")}
+      = link_to "Collections",collections_path
     %li.dropdown
       %a.dropdown-toggle{href:"#",data:{toggle:"dropdown"},role:"button",
                          aria:{haspopup:"true",expanded:"false"}}
