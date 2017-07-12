@@ -2,11 +2,10 @@
 = form_tag(import_do_sources_path, multipart: true) do
   .field
     = label_tag 'Select sources'
-    = file_field_tag 'sources[files][]', multiple:true, class: 'estilos'
+    = file_field_tag 'sources[files][]', multiple:true, id:'import_sources'
   .actions
     = submit_tag 'Import'
 
-= link_to "Send to Api", 'http://example.com/profile?' + {param1: 'value1', param2: 'value2'}.to_param, method: :post
-
+= link_to "Send to Api", "javascript:void(0);", method: :post, data:{url:"http://localhost:5000/read_files?"}, id:"send_to_api"
 %br
 = link_to 'Back', sources_path
