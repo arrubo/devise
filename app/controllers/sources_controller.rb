@@ -68,9 +68,9 @@ class SourcesController < ApplicationController
   end
 
   def import_do
-    filenames = params['sources']['files'].map(&:original_filename).join(', ')
+    @filenames = params['sources']['files'].map(&:original_filename)
     respond_to do |format|
-      format.html { redirect_to sources_url, notice: "Filenames selected: '#{filenames}'" }
+      format.html { redirect_to import_form_sources_url, notice: "Filenames selected: '#{@filenames}'" }
     end
   end
 
