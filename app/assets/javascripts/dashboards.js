@@ -1,14 +1,14 @@
 $(document).on('turbolinks:load', function() {
-  TESTER0 = document.getElementById('tester0');
-  TESTER1 = document.getElementById('tester1');
-  TESTER2 = document.getElementById('tester2');
-  TESTER3 = document.getElementById('tester3');
-  TESTER4 = document.getElementById('tester4');
-  TESTER5 = document.getElementById('tester5');
-  TESTER6 = document.getElementById('tester6');
-  TESTER7 = document.getElementById('tester7');
-  TESTER8 = document.getElementById('tester8');
-  TESTER9 = document.getElementById('tester9');
+  var TESTER0 = document.getElementById('tester0');
+  var TESTER1 = document.getElementById('tester1');
+  var TESTER2 = document.getElementById('tester2');
+  var TESTER3 = document.getElementById('tester3');
+  var TESTER4 = document.getElementById('tester4');
+  var TESTER5 = document.getElementById('tester5');
+  var TESTER6 = document.getElementById('tester6');
+  var TESTER7 = document.getElementById('tester7');
+  var TESTER8 = document.getElementById('tester8');
+  var TESTER9 = document.getElementById('tester9');
 
   var trace1_1 = {
     x: [1, 2, 3, 4],
@@ -21,39 +21,40 @@ $(document).on('turbolinks:load', function() {
     type: 'scatter'
   };
   var data1 = [trace1_1, trace1_2];
-  Plotly.plot( TESTER1, data=data1, {
+  var layout1 = {
     title:"Ejemplo lineal",
     xaxis: {title: 'X axis'},
     yaxis: {title: 'Y axis'},
-    margin: { t: 50 } } );
+    margin: { t: 50 } };
+  Plotly.plot( TESTER1, {data:data1, layout: layout1});
 
-  x2 = [1, 2, 3, 4];
-  trace1 = {
+  var x2 = [1, 2, 3, 4];
+  var trace1 = {
     x: x2,
     y: [1, 4, 9, 16],
     name: 'Trace1',
     type: 'bar'
   };
-  trace2 = {
+  var trace2 = {
     x: x2,
     y: [6, -8, -4.5, 8],
     name: 'Trace2',
     type: 'bar'
   };
-  trace3 = {
+  var trace3 = {
     x: x2,
     y: [-15, -3, 4.5, -8],
     name: 'Trace3',
     type: 'bar'
   };
-  trace4 = {
+  var trace4 = {
     x: x2,
     y: [-1, 3, -3, -4],
     name: 'Trace4',
     type: 'bar'
   };
-  data2 = [trace1, trace2, trace3, trace4];
-  layout2 = {
+  var data2 = [trace1, trace2, trace3, trace4];
+  var layout2 = {
     title:"Ejemplo Barras",
     xaxis: {title: 'X axis'},
     yaxis: {title: 'Y axis'},
@@ -111,7 +112,8 @@ $(document).on('turbolinks:load', function() {
   Plotly.plot( TESTER3, {
     data: data3, layout: layout3 });
 
-  Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv', function(err, rows){
+  //Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv', function(err, rows){
+  Plotly.d3.csv('plotly_examples/2014_usa_states.csv', function(err, rows){
     function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
     }
@@ -141,12 +143,12 @@ $(document).on('turbolinks:load', function() {
     Plotly.plot(TESTER4, data4, layout4, {showLink: false});
   });
 
-  Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/api_docs/mt_bruno_elevation.csv', function(err, rows){
+  Plotly.d3.csv('plotly_examples/mt_bruno_elevation.csv', function(err, rows){
     function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
     }
     var z_data5=[ ];
-    for(i=0;i<24;i++) {
+    for(var i=0;i<24;i++) {
       z_data5.push(unpack(rows,i));
     }
     var data5 = [{
@@ -155,7 +157,7 @@ $(document).on('turbolinks:load', function() {
     }];
     var layout5 = {
       title: 'Mt Bruno Elevation',
-      margin: { t: 50 },
+      margin: { t: 50 }
     };
     Plotly.newPlot(TESTER5, data5, layout5);
   });
@@ -204,7 +206,7 @@ $(document).on('turbolinks:load', function() {
   };
   Plotly.plot(TESTER7, data7, layout7);
 
-  var rawDataURL = 'https://raw.githubusercontent.com/plotly/datasets/master/2016-weather-data-seattle.csv';
+  var rawDataURL = 'plotly_examples/2016-weather-data-seattle.csv';
   var xField = 'Date';
   var yField = 'Mean_TemperatureC';
   var selectorOptions = {
@@ -229,8 +231,8 @@ $(document).on('turbolinks:load', function() {
       count: 1,
       label: '1y'
     }, {
-      step: 'all',
-    }],
+      step: 'all'
+    }]
   };
   Plotly.d3.csv(rawDataURL, function(err, rawData) {
     if(err) throw err;
@@ -251,7 +253,7 @@ $(document).on('turbolinks:load', function() {
   function prepData(rawData) {
     var x = [];
     var y = [];
-    rawData.forEach(function(datum, i) {
+    rawData.forEach(function(datum) {
       x.push(new Date(datum[xField]));
       y.push(datum[yField]);
     });
@@ -262,7 +264,7 @@ $(document).on('turbolinks:load', function() {
     }];
   }
 
-  Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv', function(err, rows){
+  Plotly.d3.csv('plotly_examples/gapminderDataFiveYear.csv', function(err, rows){
     function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
     }
@@ -270,7 +272,6 @@ $(document).on('turbolinks:load', function() {
       allYear = unpack(rows, 'year'),
       allGdp = unpack(rows, 'gdpPercap'),
       listofCountries = [],
-      currentCountry,
       currentGdp = [],
       currentYear = [];
     for (var i = 0; i < allCountryNames.length; i++ ){
@@ -287,7 +288,7 @@ $(document).on('turbolinks:load', function() {
           currentYear.push(allYear[i]);
         }
       }
-    };
+    }
     // Default Country Data
     setBubblePlot('Afghanistan');
     function setBubblePlot(chosenCountry) {
@@ -307,9 +308,8 @@ $(document).on('turbolinks:load', function() {
         margin: { t: 50 }
       };
       Plotly.newPlot(TESTER9, data9, layout9);
-    };
+    }
     var innerContainer = document.querySelector('[data-num="0"'),
-      plotEl = innerContainer.querySelector('.plot'),
       countrySelector = innerContainer.querySelector('.countrydata');
     function assignOptions(textArray, selector) {
       for (var i = 0; i < textArray.length;  i++) {
@@ -325,7 +325,7 @@ $(document).on('turbolinks:load', function() {
     countrySelector.addEventListener('change', updateCountry, false);
   });
 
-  var d3 = Plotly.d3
+  var d3 = Plotly.d3;
   function normal_array( mean, stddev, size ){
     var arr = new Array(size), i;
     // from http://bl.ocks.org/nrabinowitz/2034281
@@ -337,29 +337,29 @@ $(document).on('turbolinks:load', function() {
     }
     return arr;
   }
-  var x0 = normal_array(2, 0.45, 300);
-  var y0 = normal_array(2, 0.45, 300);
-  var x1 = normal_array(6, 0.4, 200);
-  var y1 = normal_array(6, 0.4, 200)
-  var x2 = normal_array(4, 0.3, 200);
-  var y2 = normal_array(4, 0.3, 200);
+  var x0_ = normal_array(2, 0.45, 300);
+  var y0_ = normal_array(2, 0.45, 300);
+  var x1_ = normal_array(6, 0.4, 200);
+  var y1_ = normal_array(6, 0.4, 200);
+  var x2_ = normal_array(4, 0.3, 200);
+  var y2_ = normal_array(4, 0.3, 200);
   // console.log(x0);
   var data0 = [
     {
-      x: x0,
-      y: y0,
+      x: x0_,
+      y: y0_,
       mode: 'markers'
     }, {
-      x: x1,
-      y: y1,
+      x: x1_,
+      y: y1_,
       mode: 'markers'
     }, {
-      x: x2,
-      y: y2,
+      x: x2_,
+      y: y2_,
       mode: 'markers'
     }, {
-      x: x1,
-      y: y0,
+      x: x1_,
+      y: y0_,
       mode: 'markers'
     }
   ];
@@ -369,10 +369,10 @@ $(document).on('turbolinks:load', function() {
         type: 'circle',
         xref: 'x',
         yref: 'y',
-        x0: d3.min(x0),
-        y0: d3.min(y0),
-        x1: d3.max(x0),
-        y1: d3.max(y0),
+        x0: d3.min(x0_),
+        y0: d3.min(y0_),
+        x1: d3.max(x0_),
+        y1: d3.max(y0_),
         opacity: 0.2,
         fillcolor: 'blue',
         line: {
@@ -383,10 +383,10 @@ $(document).on('turbolinks:load', function() {
         type: 'circle',
         xref: 'x',
         yref: 'y',
-        x0: d3.min(x1),
-        y0: d3.min(y1),
-        x1: d3.max(x1),
-        y1: d3.max(y1),
+        x0: d3.min(x1_),
+        y0: d3.min(y1_),
+        x1: d3.max(x1_),
+        y1: d3.max(y1_),
         opacity: 0.2,
         fillcolor: 'orange',
         line: {
@@ -397,10 +397,10 @@ $(document).on('turbolinks:load', function() {
         type: 'circle',
         xref: 'x',
         yref: 'y',
-        x0: d3.min(x2),
-        y0: d3.min(y2),
-        x1: d3.max(x2),
-        y1: d3.max(y2),
+        x0: d3.min(x2_),
+        y0: d3.min(y2_),
+        x1: d3.max(x2_),
+        y1: d3.max(y2_),
         opacity: 0.2,
         fillcolor: 'green',
         line: {
@@ -411,10 +411,10 @@ $(document).on('turbolinks:load', function() {
         type: 'circle',
         xref: 'x',
         yref: 'y',
-        x0: d3.min(x1),
-        y0: d3.min(y0),
-        x1: d3.max(x1),
-        y1: d3.max(y0),
+        x0: d3.min(x1_),
+        y0: d3.min(y0_),
+        x1: d3.max(x1_),
+        y1: d3.max(y0_),
         opacity: 0.2,
         fillcolor: 'red',
         line: {
@@ -424,10 +424,8 @@ $(document).on('turbolinks:load', function() {
     ],
     margin: { t: 50 },
     showlegend: false
-  }
+  };
   Plotly.plot(TESTER0, data0, layout0);
-
-
 
   // Plotly.d3.json('https://raw.githubusercontent.com/plotly/plotly.js/master/test/image/mocks/sankey_energy_dark.json', function(fig){
   //   var data = {
